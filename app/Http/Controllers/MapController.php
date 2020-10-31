@@ -22,10 +22,10 @@ class MapController extends Controller
 		if(isset(json_decode($getVechicalsHistoryData)->response)) {
 			$getVechicalsHistoryDataResponse = json_decode($getVechicalsHistoryData)->response;
 			$totalDistance = $getVechicalsHistoryDataResponse[sizeof($getVechicalsHistoryDataResponse)-1]->Distance - $getVechicalsHistoryDataResponse[0]->Distance;
+			
 			if(isset($getVechicalsHistoryDataResponse) > 0) {
    			    foreach($getVechicalsHistoryDataResponse as $getVechicalData) {
-					array_push($routePoints, array("lat" => $getVechicalData->Latitude, "lng" => $getVechicalData->Longitude));
-					
+					array_push($routePoints, array("lat" => $getVechicalData->Latitude, "lng" => $getVechicalData->Longitude));		
 					if($flag == 1 && $getVechicalData->Speed == null) {
 						$shortDistance += $getVechicalData->Distance - $lastDistanceOnWay;
 						$numStops++;
@@ -57,9 +57,9 @@ class MapController extends Controller
 			$getVechicalsHistoryDataResponse = json_decode($getVechicalsHistoryData)->response;
 			foreach($getVechicalsHistoryDataResponse as $carData) {
 
+				echo $carData->lastEngineOnTime;
 				$lastEngineOnDate = new DateTime($carData->lastEngineOnTime);
 				$interval = date_diff($startDate, $lastEngineOnDate);
-
 				if($carData->enginestate == 0) {
 					if($interval->days > 30 || $interval->h > 24) {
 						$lastActivity = date("Y/m/d", strtotime($carData->lastEngineOnTime));
@@ -72,13 +72,13 @@ class MapController extends Controller
 					$lastActivity = "On the way.";
 				}
 				
-				array_push($vehicleData, array("objectid" => $carData->objectId, "speed" => $carData->speed == null ? 0 : $carData->speed, "address" => $carData->address, 
-				"lastactivity" => $lastActivity, "carname" => $carData->objectName, "carnumber" => $carData->plate, "lat" => $carData->latitude, "lng" => $carData->longitude));
+				/* array_push($vehicleData, array("objectid" => $carData->objectId, "speed" => $carData->speed == null ? 0 : $carData->speed, "address" => $carData->address, 
+				"lastactivity" => $lastActivity, "carname" => $carData->objectName, "carnumber" => $carData->plate, "lat" => $carData->latitude, "lng" => $carData->longitude)); */
 			}		
-			return response()->json(array("response" => $vehicleData));
+			// return response()->json(array("response" => $vehicleData));
 		} 
 		else {
-			return response()->json(array("error" => 101));
+			// return response()->json(array("error" => 101));
 		}
 	}
 	
