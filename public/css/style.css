@@ -1,0 +1,81 @@
+#map {
+	height: 100%;
+}
+
+#datepicker { 
+	width: 207px;
+}
+
+html, body {
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.key-box {
+	position: relative;
+    top: 97px;
+    left: 20px;
+}
+
+.car-list {
+	display: none;
+	width: 51%;
+	position: relative;
+	top: 116px;
+	left: 10px;
+}
+
+.car-route-details {
+	width:51%;
+	position: relative;
+    top: -314px;
+	left: 10px;
+	display: none;
+}
+
+.car-route {
+	position: relative;
+	width: 51%;
+	top: -314px;
+	left: 10px;
+}
+
+.key-box {
+	position: relative;
+	top: 97px;
+	left: 10px;
+}
+
+.route-search-box {
+	display: none;
+	position: relative;
+    top: -388px;
+    left: 11px;
+}
+
+.error-section-vehicles {
+	display:none;
+	position: relative;
+    top: 68px;
+    left: 250px;
+    color: red;
+    font-weight: 600;
+}
+
+.error-section-vehicle-history {
+	display:none;
+	color: red;
+    position: relative;
+    top: 138px;
+    left: 312px;
+    font-weight: 600;
+}
+
+.loading {
+	color:red;
+	position: relative;
+	left: 800px;
+	top: 184px;
+	display:none;
+}
