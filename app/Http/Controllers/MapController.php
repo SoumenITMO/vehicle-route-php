@@ -62,7 +62,12 @@ class MapController extends Controller
 						$lastActivity = date("Y/m/d", strtotime($carData->lastEngineOnTime));
 					} 
 					else if($interval->h < 24 && $interval->days > 0) {
-						$lastActivity = $interval->d . " days ago";
+						if($interval->d == 1) {
+							$lastActivity = $interval->d . " day ago";
+						} 
+						else {
+							$lastActivity = $interval->d . " days ago";
+						}
 					}
 					else if($interval->h < 24) {
 						$lastActivity = $interval->h . " hours ago";
