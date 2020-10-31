@@ -69,7 +69,7 @@ class MapController extends Controller
 							$lastActivity = $interval->d . " days ago";
 						}
 					}
-					else if($interval->h < 24) {
+					else {
 						$lastActivity = $interval->h . " hours ago";
 					}
 				} 
